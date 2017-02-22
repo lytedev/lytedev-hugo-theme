@@ -9,9 +9,32 @@
 	<body class="{{ .Kind }}-page">
 		<div id="site">
 
-			<header id="site-header"{{ if and (.Site.Params.Index.image) (eq .Kind "home") }} style="background-image:url({{ .Site.Params.Index.image }})"{{ else if ($.Param "image") }} style="background-image:url({{ $.Param "image" }})"{{ end }}>
+			<header id="site-header" style="
+					 {{- if and (.Site.Params.Index.heroBackgroundColor) (eq .Kind "home") -}}
+						 background-color:{{ .Site.Params.Index.heroBackgroundColor }};
+					 {{- else if ($.Param "image") -}}
+						 background-color:{{ $.Param "heroBackgroundColor" }};
+					 {{- end -}}
+					 {{- if and (.Site.Params.Index.image) (eq .Kind "home") -}}
+						 background-image:url({{ .Site.Params.Index.image }});
+					 {{- else if ($.Param "image") -}}
+						 background-image:url({{ $.Param "image" }});
+					 {{- end -}}
+					 ">
 
-				<div id="site-header-overlay" style="{{ if and (.Site.Params.Index.imageOverlayColor) (eq .Kind "home") }} background-color:{{ .Site.Params.Index.imageOverlayColor }};{{ else if ($.Param "imageOverlayColor") }} background-color:{{ $.Param "imageOverlayColor" }}{{ end }};{{ if and (.Site.Params.Index.imageOverlayOpacity) (eq .Kind "home") }} opacity:{{ .Site.Params.Index.imageOverlayOpacity }};{{ else if ($.Param "imageOverlayOpacity") }} opacity:{{ $.Param "imageOverlayOpacity" }};{{ end }}"></div>
+				<div id="site-header-overlay" style="
+						{{- if and (.Site.Params.Index.imageOverlayColor) (eq .Kind "home") -}}
+							background-color:{{ .Site.Params.Index.imageOverlayColor }};
+						{{- else if ($.Param "imageOverlayColor") -}}
+							background-color:{{ $.Param "imageOverlayColor" }};
+						{{- end -}}
+						
+						{{- if and (.Site.Params.Index.imageOverlayOpacity) (eq .Kind "home") -}}
+							opacity:{{ .Site.Params.Index.imageOverlayOpacity }};
+						{{- else if ($.Param "imageOverlayOpacity") -}}
+							opacity:{{ $.Param "imageOverlayOpacity" }};
+						{{- end -}}
+						"></div>
 
 				<nav id="site-navigation">
 
@@ -34,16 +57,25 @@
 				{{ block "intro" . }}
 					<div id="intro">
 						<h2 id="page-title">{{ .Title }}</h2>
+						<p id="page-description">{{ .Description }}</p>
 					</div>
 				{{ end }}
 
 			</header>
 
-			<main id="site-content" class="wrapper" role="main">
-				{{ block "main" . }}
-				{{ end }}
+			<main id="site-content" role="main">
+				<div class="wrapper">
+					{{ block "main" . }}
+					{{ end }}
+				</div>
 			</main>
 
+			<footer id="site-footer">
+				Copyright &copy; Daniel Flanagan
+			</footer>
 		</div>
+
+		<script src="/scripts/site.js"></script>
+		{{ block "body-end" . }}{{ partial "body-end.html" . }}{{ end }}
 	</body>
 </html>

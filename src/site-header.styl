@@ -5,8 +5,11 @@
 	color #fff
 	text-shadow 0rem 0.05rem 0.2rem #000
 	background-color $brand-primary-color
+	background-size cover
+	background-position center
 	padding 2rem
 	display flex
+	text-align center
 	flex-direction column
 
 	// the background image pseudo element
@@ -17,6 +20,7 @@
 		top 0
 		left 0
 		background-color rgba(0, 0, 0, 0.5)
+		background-position cover
 		z-index -4
 
 	#intro
@@ -26,6 +30,7 @@
 		align-items center
 		justify-content center
 		flex-grow 1
+		text-align center
 
 		.wrapper
 			min-height 20rem
@@ -50,8 +55,15 @@
 			line-height 1.4em
 
 #site-header.hero-header, body.home-page #site-header
+	height 100vh
+
+	#site-header-overlay
 		height 100vh
 
-		#site-header-overlay
-			height 100vh
+.hero-down-indicator
+	position relative
+	top -4rem
+	font-style normal
+	font-size 2.4rem
+	opacity 0.5
 

@@ -43,3 +43,7 @@ with your site.
 * Add your logo! The theme will look for a `logo.html` in your
   `layouts/partials` and display it in the theme location, otherwise, the site
   title will just be displayed.
+* Set a hero image to display on the index page! Just set `params.index.image`
+  in your Hugo site config. You can also set `params.index.imageOverlayColor`
+  and `params.index.imageOverlayOpacity` to "encourage" the image to be darker
+  so your intro text is still highly legible.

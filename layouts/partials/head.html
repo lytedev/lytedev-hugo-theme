@@ -1,9 +1,0 @@
-<header id="site-header"{{ if and (.Site.Params.Index.image) (eq .Kind "home") }} style="background-image:url({{ .Site.Params.Index.image }})"{{ else if ($.Param "image") }} style="background-image:url({{ $.Param "image" }})"{{ end }}>
-	<div id="site-header-overlay" style="{{ if and (.Site.Params.Index.imageOverlayColor) (eq .Kind "home") }} background-color:{{ .Site.Params.Index.imageOverlayColor }};{{ else if ($.Param "imageOverlayColor") }} background-color:{{ $.Param "imageOverlayColor" }}{{ end }};{{ if and (.Site.Params.Index.imageOverlayOpacity) (eq .Kind "home") }} opacity:{{ .Site.Params.Index.imageOverlayOpacity }};{{ else if ($.Param "imageOverlayOpacity") }} opacity:{{ $.Param "imageOverlayOpacity" }};{{ end }}"></div>
-	{{ partial "navigation.html" . }}	
-	<div id="intro">
-		{{ block "intro" . }}
-			<h2 id="page-title">{{ .Title }}</h2>
-		{{ end }}
-	</div>
-</header>

@@ -1,0 +1,11 @@
+<nav id="site-navigation">
+	{{ block "logo" . }}{{ partial "logo.html" . }}{{ end }}
+	<ul id="site-navigation-links">
+		{{ $currentPage := . }}
+		{{ range .Site.Menus.main }}
+			<a class="nav-link{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">
+				<li>{{ .Pre }}{{ .Name }}</li>
+			</a>
+		{{ end }}
+	</ul>
+</nav>

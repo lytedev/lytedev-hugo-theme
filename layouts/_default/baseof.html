@@ -6,9 +6,31 @@
 		<title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 		<link rel="stylesheet" href="/styles/main.css"></script>
 	</head>
-	<body>
-		{{ partial "head.html" . }}
-		{{ block "main" . }}
-		{{ end }}
+	<body class="{{ .Kind }}-page">
+		<div id="site">
+			<header id="site-header"{{ if and (.Site.Params.Index.image) (eq .Kind "home") }} style="background-image:url({{ .Site.Params.Index.image }})"{{ else if ($.Param "image") }} style="background-image:url({{ $.Param "image" }})"{{ end }}>
+				<div id="site-header-overlay" style="{{ if and (.Site.Params.Index.imageOverlayColor) (eq .Kind "home") }} background-color:{{ .Site.Params.Index.imageOverlayColor }};{{ else if ($.Param "imageOverlayColor") }} background-color:{{ $.Param "imageOverlayColor" }}{{ end }};{{ if and (.Site.Params.Index.imageOverlayOpacity) (eq .Kind "home") }} opacity:{{ .Site.Params.Index.imageOverlayOpacity }};{{ else if ($.Param "imageOverlayOpacity") }} opacity:{{ $.Param "imageOverlayOpacity" }};{{ end }}"></div>
+				<nav id="site-navigation">
+					{{ block "logo" . }}{{ partial "logo.html" . }}{{ end }}
+					<ul id="site-navigation-links">
+						{{ $currentPage := . }}
+						{{ range .Site.Menus.main }}
+							<a class="nav-link{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">
+								<li>{{ .Pre }}{{ .Name }}</li>
+							</a>
+						{{ end }}
+					</ul>
+				</nav>
+				<div id="intro">
+					{{ block "intro" . }}
+						<h2 id="page-title">{{ .Title }}</h2>
+					{{ end }}
+				</div>
+			</header>
+			<main id="site-content" class="wrapper" role="main">
+				{{ block "main" . }}
+				{{ end }}
+			</main>
+		</div>
 	</body>
 </html>

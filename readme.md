@@ -2,6 +2,8 @@
 
 > The Hugo theme for my personal site at https://lytedev.io
 
+**TODO**: Add a screenshot!
+
 ## Building the Theme
 
 Due to the odd requirements I have for my personal site, there is a surprisingly
@@ -32,3 +34,12 @@ Finally, edit your Hugo config to use the theme:
 ``` yaml
 theme: "lytedev"
 ```
+
+## Usage and Options
+
+Here are a few theme-specific things you may want to mess with to get it working
+with your site.
+
+* Add your logo! The theme will look for a `logo.html` in your
+  `layouts/partials` and display it in the theme location, otherwise, the site
+  title will just be displayed.

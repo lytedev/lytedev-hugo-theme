@@ -1,0 +1,66 @@
+*, *::before, *::after
+	box-sizing border-box
+
+// ::-webkit-scrollbar
+//		 width 0.8rem
+//		 background #111
+
+// ::-webkit-scrollbar-track
+//		 border-radius 10px
+//		 background #111
+
+// ::-webkit-scrollbar-thumb
+//		 border-radius 10px
+//		 background #888
+
+html
+	font-size 62.5%
+
+body, html
+	margin 0
+	padding 0
+	overflow-x hidden
+	// overflow hidden
+	background-color $background-color
+
+body
+	font 2.1rem/1.4em $fontstack
+	font-weight 400
+	color $copy-color
+	overflow-y auto
+
+a
+	color $link-color
+	text-decoration none
+	border-bottom dotted 0.1rem currentColor
+	transition all 0.2s ease
+
+	&:hover
+		color $brand-primary-color
+		border-color transparent
+
+p
+	margin 0.25em 0
+
+button, form, input, .btn
+	display webkit-inline-box
+	display inline-flex
+	align-items center
+	background transparent
+	border solid 0.1rem $copy-color
+	font inherit
+	color inherit
+	padding 0 1.4rem
+	margin 0
+	height 4rem
+	border-radius 0.3rem
+	transition all 0.2s ease
+	cursor pointer
+
+button
+	&:hover
+		border-color #999
+
+svg // ignore some stuff svg doesn't ignore by default
+	text-shadow none
+

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400')
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700')
 
 $fontstack = "Ubuntu", "Lato", "Helvetica Neue", "Calibri Light", Roboto, sans-serif
 $serif-fontstack = "Libre Baskerville", "Baskerville", "Times New Roman", serif
@@ -34,14 +34,19 @@ body
 	font-weight 300
 	color $copy-color
 	overflow-y auto
+	text-shadow 0px 1px 1px #000
 
-	small
-		font-size 1.2rem
-		color darken($copy-color, 30%)
+	@media screen and (max-width: $mobile-s-breakpoint)
+		font-size 1.6rem
+
+small, figcaption
+	font-size 1.2rem
+	color darken($copy-color, 30%)
 
 a
 	color $link-color
 	text-decoration none
+	padding-bottom 0.2em
 	border-bottom dotted 0.1rem currentColor
 	transition all 0.2s ease
 
@@ -52,25 +57,42 @@ a
 p
 	margin 0.25em 0
 
-button, form, input, .btn
+button, form, input, .btn, .button
+	display inline-box
 	display webkit-inline-box
 	display inline-flex
 	align-items center
 	background transparent
-	border solid 0.1rem $copy-color
+	border solid 0.05em $copy-color
 	font inherit
 	color inherit
-	padding 0 1.4rem
-	margin 0
-	height 4rem
-	border-radius 0.3rem
+	padding 0.4em 1.0em
+	margin 0.1em
+	border-radius 0.1em
 	transition all 0.2s ease
 	cursor pointer
+	text-shadow inherit
 
-button
+	&.large
+		font-size 2.0rem
+
 	&:hover
-		border-color #999
+		border-color #fff
+		background-color #fff
 
 svg // ignore some stuff svg doesn't ignore by default
 	text-shadow none
 
+h1, h2, h3, h4, h5, h6
+	font-weight 300
+	text-align center
+
+hr
+	border none
+	border-top solid 1px rgba(255, 255, 255, 0.25)
+	border-bottom solid 1px rgba(0, 0, 0, 0.25)
+
+figure
+	text-align center
+	margin 0
+	padding 0

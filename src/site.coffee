@@ -1,9 +1,18 @@
 document.documentElement.classList.remove 'no-js'
 
-# there's gotta be a simple quadratic solution to this
+# simple wrapper for console.log
+log = ->
+	if not console? then return false
+	args = [].slice.apply arguments
+	console.log.apply console, args
+
+log 'Thanks for checking out my site\'s theme\'s code!'
+log 'The raw source is available on my GitHub at https://github.com/lytedev'
+
+# TODO: I should use the non-trig solution here...
 easeInOut = (t) -> (Math.sin((t + (Math.PI / 2)) * (Math.PI)) + 1) / 2
 
-# function for easing object properties using requestAnimationFrame
+# function for easing object number properties using requestAnimationFrame
 animate = (obj, key, endValue, duration, easeFunc) ->
 	# if we don't have requestAnimationFrame, just instantly set the value
 	if not requestAnimationFrame? then return obj[key] = endValue
@@ -23,14 +32,6 @@ animate = (obj, key, endValue, duration, easeFunc) ->
 		requestAnimationFrame update
 	requestAnimationFrame update
 
-log = ->
-	if not console? then return false
-	args = [].slice.apply arguments
-	console.log.apply console, args
-
-log 'Thanks for checking out my site\'s code!'
-log 'The raw source is available on my GitHub at https://github.com/lytedev'
-
 do -> # setup scroll-to-content buttons
 	scrollToMains = document.querySelectorAll '.scroll-to-main'
 	header = document.getElementById 'site-header'
@@ -38,4 +39,10 @@ do -> # setup scroll-to-content buttons
 	for el in scrollToMains
 		el.addEventListener 'click', ->
 			scrollTo = main.offsetTop
-			animate document.body, "scrollTop", scrollTo, 500, easeInOut
+			animate document.body, 'scrollTop', scrollTo, 500, easeInOut
+
+do -> # resize body min-height to account for mobile address bar?
+	window.addEventListener 'load', ->
+		h = Math.max document.documentElement.clientHeight, (window.innerHeight or 0)
+		console.log h, document.body.style.minHeight
+		document.body.style.minHeight = h

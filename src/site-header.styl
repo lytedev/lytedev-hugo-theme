@@ -2,6 +2,7 @@
 	position relative
 	z-index 1
 	overflow-x hidden
+	overflow-y hidden
 	color #fff
 	text-shadow 0rem 0.05rem 0.2rem #000
 	background-color $brand-primary-color
@@ -32,6 +33,9 @@
 		flex-grow 1
 		text-align center
 		padding-bottom 2em
+
+		@media screen and (max-width: $mobile-breakpoint)
+			margin-top 3rem	
 
 		.wrapper
 			min-height 20rem
@@ -64,7 +68,7 @@
 
 .hero-down-indicator
 	position relative
-	top -4rem
+	top -2rem
 	font-style normal
 	font-size 2.4rem
 	opacity 0.5

@@ -1,14 +1,23 @@
+.text-center
+	text-align center
+
 #site
 	overflow hidden
+	min-height 100vh
+	position relative
+	display flex
+	flex-direction column
+	justify-content space-between
 
 .wrapper
 	max-width 700px
 	margin 0 auto
 	padding 0 1rem
 
-#site-content
-	padding 1em 0
+	&.fat
+		max-width 1000px
 
+#site-content
 	p
 		line-height 1.8em
 		margin 1em 0
@@ -17,3 +26,32 @@
 	display inline-block
 	padding 1rem
 	cursor pointer
+
+.small-block-item
+	header h3
+		margin-top 0
+
+section
+	&.content
+		padding 1em 0
+
+	&.alt-bg
+		// background-color rgba(255, 255, 255, 0.1)
+		background-color alpha($brand-primary-color, 10%)
+
+button, form, input, .btn, .button
+	&.primary
+		border-color $brand-primary-color
+		background-color alpha($brand-primary-color, 0.8)
+		color #fff
+		text-transform uppercase
+		font-size 2.4rem
+		padding 0.6em 1.2em
+	
+		&:hover
+			background-color $brand-primary-color
+
+.avatar
+	width 256px
+	height 256px
+	border-radius 128px

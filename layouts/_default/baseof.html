@@ -12,7 +12,7 @@
 			<header id="site-header" style="
 					 {{- if and (.Site.Params.Index.heroBackgroundColor) (eq .Kind "home") -}}
 						 background-color:{{ .Site.Params.Index.heroBackgroundColor }};
-					 {{- else if ($.Param "image") -}}
+					 {{- else if ($.Param "heroBackgroundColor") -}}
 						 background-color:{{ $.Param "heroBackgroundColor" }};
 					 {{- end -}}
 					 {{- if and (.Site.Params.Index.image) (eq .Kind "home") -}}
@@ -46,9 +46,11 @@
 					<ul id="site-navigation-links">
 						{{ $currentPage := . }}
 						{{ range .Site.Menus.main }}
-							<a class="nav-link{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">
-								<li>{{ .Pre }}{{ .Name }}</li>
-							</a>
+							<li>
+								<a class="nav-link{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">
+									{{ .Pre }}{{ .Name }}
+								</a>
+							</li>
 						{{ end }}
 					</ul>
 
@@ -56,7 +58,7 @@
 
 				{{ block "intro" . }}
 					<div id="intro">
-						<h2 id="page-title">{{ .Title }}</h2>
+						<h2 id="page-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
 						<p id="page-description">{{ .Description }}</p>
 					</div>
 				{{ end }}
@@ -64,14 +66,17 @@
 			</header>
 
 			<main id="site-content" role="main">
-				<div class="wrapper">
-					{{ block "main" . }}
-					{{ end }}
-				</div>
+				{{ block "main" . }}
+				{{ end }}
 			</main>
 
 			<footer id="site-footer">
-				Copyright &copy; Daniel Flanagan
+				<section>
+					<p>Copyright &copy; Daniel Flanagan</p>
+				</section>
+				<section>
+					<a href="/privacy">Privacy</a>
+				</section>
 			</footer>
 		</div>
 

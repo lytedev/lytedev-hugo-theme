@@ -1,7 +1,16 @@
 #site-footer
-	margin 0 2em
-	padding 2em 0
-	border-top solid 1px #333
-	color #888
+	padding 2em
+	color #fff
 	font-size 1.2rem
+	display flex
+	justify-content space-between
+	background-color darken($brand-primary-color, 50%)
+	align-self flex-end
+	width 100%
 
+	@media screen and (max-width: $mobile-breakpoint)
+		flex-direction column
+		text-align center
+
+	a
+		color inherit

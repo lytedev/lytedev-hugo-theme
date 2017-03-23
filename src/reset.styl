@@ -57,7 +57,11 @@ a
 p
 	margin 0.25em 0
 
-button, form, input, .btn, .button
+label
+	text-align left
+	display block
+
+button, form input, .btn, .button, textarea
 	display inline-box
 	display webkit-inline-box
 	display inline-flex
@@ -70,15 +74,24 @@ button, form, input, .btn, .button
 	margin 0.1em
 	border-radius 0.1em
 	transition all 0.2s ease
-	cursor pointer
 	text-shadow inherit
 
 	&.large
 		font-size 2.0rem
 
+form input, textarea
+	width 100%
+
+button, .button, .btn
+	text-align center
+	align-content center
+	justify-content center
+	cursor pointer
+
 	&:hover
 		border-color #fff
 		background-color #fff
+		color $brand-primary-color
 
 svg // ignore some stuff svg doesn't ignore by default
 	text-shadow none

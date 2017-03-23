@@ -1,20 +1,11 @@
-{{ define "intro" }}
-	<div id="intro">
-		<h2>Blog</h2>
-		<p>Read some of my thoughts on life and technology.</p>
-	</div>
-{{ end }}
-
 {{ define "main" }}
 	<section class="content">
 		<div class="wrapper">
-			{{ range $i, $p := (.Paginate .Data.Pages).Pages }}
+			{{ range $i, $p := where (.Paginate .Data.Pages).Pages "Section" "blog" }}
 				{{ $p.Render "li" }}
+			{{ else }}
+				<p class="text-center">Looks like there's nothing here!... yet!</p>
 			{{ end }}
 		</div>
 	</section>
-{{ end }}
-
-{{ define "title" }}
-	{{ .Title }} - {{ .Site.Title }}
 {{ end }}

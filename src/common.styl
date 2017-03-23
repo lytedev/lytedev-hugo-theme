@@ -48,7 +48,7 @@ section, article
 		// background-color rgba(255, 255, 255, 0.1)
 		background-color alpha($brand-primary-color, 10%)
 
-button, form, input, .btn, .button
+button, form input, .btn, .button
 	&.primary
 		border-color $brand-primary-color
 		background-color alpha($brand-primary-color, 0.8)
@@ -128,3 +128,11 @@ button, form, input, .btn, .button
 			z-index 10
 			margin 0
 			padding 0
+
+form
+	.field
+		margin-bottom 0.5em
+
+		label
+			font-size 16px
+			text-transform uppercase

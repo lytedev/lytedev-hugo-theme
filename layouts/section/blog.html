@@ -1,8 +1,14 @@
+{{ define "intro" }}
+	<div id="intro">
+		<h2>Blog</h2>
+		<p>Read some of my thoughts on life and technology.</p>
+	</div>
+{{ end }}
+
 {{ define "main" }}
-	Stuff!
 	<section class="content">
 		<div class="wrapper">
-			{{ range $i, $p := where (.Paginate .Data.Pages).Pages "Section" "blog" }}
+			{{ range $i, $p := (.Paginate .Data.Pages).Pages }}
 				{{ $p.Render "li" }}
 			{{ end }}
 		</div>

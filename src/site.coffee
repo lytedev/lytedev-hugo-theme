@@ -40,9 +40,3 @@ do -> # setup scroll-to-content buttons
 		el.addEventListener 'click', ->
 			scrollTo = main.offsetTop
 			animate document.body, 'scrollTop', scrollTo, 500, easeInOut
-
-do -> # resize body min-height to account for mobile address bar?
-	window.addEventListener 'load', ->
-		h = Math.max document.documentElement.clientHeight, (window.innerHeight or 0)
-		console.log h, document.body.style.minHeight
-		document.body.style.minHeight = h

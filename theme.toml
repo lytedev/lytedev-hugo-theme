@@ -6,6 +6,9 @@ homepage = "https://github.com/lytedev/lytedev-hugo-theme"
 tags = ["blog", "portfolio", "hero"]
 features = ["blog", "hero", "portfolio"]
 
+[permalinks]
+  blog = /blog/:year/:month/:day/:title
+
 [author]
   name = "lytedev"
   homepage = "https://lytedev.io"

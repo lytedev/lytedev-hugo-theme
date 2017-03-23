@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 		<link rel="stylesheet" href="/styles/main.css"></script>
+		{{ block "head-end" . }}{{ partial "head-end.html" . }}{{ end }}
 	</head>
 	<body class="{{ .Kind }}-page">
 		<div id="site">

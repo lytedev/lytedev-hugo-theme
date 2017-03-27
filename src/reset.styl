@@ -29,6 +29,11 @@ body, html
 	// overflow hidden
 	background-color $background-color
 
+@media print
+	*
+		color #111
+		text-shadow none
+
 body
 	font 1.8rem/1.4em $fontstack
 	font-weight 300
@@ -38,6 +43,7 @@ body
 
 	@media screen and (max-width: $mobile-s-breakpoint)
 		font-size 1.6rem
+
 
 small, figcaption
 	font-size 1.2rem

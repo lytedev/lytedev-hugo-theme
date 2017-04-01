@@ -2,7 +2,8 @@
 
 > The Hugo theme for my personal site at https://lytedev.io
 
-**TODO**: Add a screenshot!
+![Index page][index-screenshot]
+![About page][about-screenshot]
 
 ## Building the Theme
 
@@ -47,3 +48,9 @@ with your site.
   in your Hugo site config. You can also set `params.index.imageOverlayColor`
   and `params.index.imageOverlayOpacity` to "encourage" the image to be darker
   so your intro text is still highly legible.
+	
+---
+
+
+[index-screenshot]: /meta/screenshots/index-hero.png
+[about-screenshot]: /meta/screenshots/about.png

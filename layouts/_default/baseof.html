@@ -5,6 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 		<link rel="stylesheet" href="/styles/main.css"></script>
+		{{- if .Site.Params.themeColor -}}
+			<meta name="theme-color" content="{{ .Site.Params.themeColor }}">
+			<meta name="msapplication-navbutton-color" content="{{ .Site.Params.themeColor }}">
+			<meta name="apple-mobile-web-app-status-bar-style" content="{{ .Site.Params.themeColor }}">
+		{{- else -}}
+			<meta name="theme-color" content="#a02d3a">
+			<meta name="msapplication-navbutton-color" content="#a02d3a">
+			<meta name="apple-mobile-web-app-status-bar-style" content="#a02d3a">
+		{{- end -}}
 		{{ block "head-end" . }}{{ partial "head-end.html" . }}{{ end }}
 	</head>
 	<body class="{{ .Kind }}-page">

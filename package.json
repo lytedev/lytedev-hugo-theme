@@ -1,6 +1,6 @@
 {
   "name": "lytedev-hugo-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The Hugo theme for my personal site at https://lytedev.io",
   "main": "index.js",
   "dependencies": {

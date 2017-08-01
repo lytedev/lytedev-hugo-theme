@@ -9,34 +9,44 @@ log = ->
 log 'Thanks for checking out my site\'s theme\'s code!'
 log 'The raw source is available on my GitHub at https://github.com/lytedev'
 
-# TODO: I should use the non-trig solution here...
-easeInOut = (t) -> (Math.sin((t + (Math.PI / 2)) * (Math.PI)) + 1) / 2
+easeOutCubic = (t) -> (--t) * t * t + 1
 
-# function for easing object number properties using requestAnimationFrame
-animate = (obj, key, endValue, duration, easeFunc) ->
-	# if we don't have requestAnimationFrame, just instantly set the value
-	if not requestAnimationFrame? then return obj[key] = endValue
-	if not easeFunc? then easeFunc = (time) -> time
-	initialVal = parseFloat(obj[key])
-	diff = parseFloat(endValue) - initialVal
-	initialTime = 0
-	elapsed = 0
-	update = (elapsed) ->
-		if initialTime == 0
-			initialTime = elapsed
-		else
-			if elapsed - initialTime >= duration
-				return obj[key] = endValue
+animateValueOverTime =
+	(initialValue, endValue, duration, callback, easeFunc) ->
+		# duration is in ms
+		# if we don't have requestAnimationFrame, just instantly set the value
+		if not requestAnimationFrame? then return obj[key] = endValue
+		if not easeFunc? then easeFunc = (time) -> time
+
+		diff = parseFloat(endValue) - parseFloat(initialValue)
+		initialTime = 0
+		elapsed = 0
+
+		update = (elapsed) ->
+			if initialTime == 0
+				initialTime = elapsed
+
 			else
-				obj[key] = initialVal + (easeFunc(parseFloat((elapsed - initialTime) / duration)) * diff)
+				if elapsed - initialTime >= duration
+					return callback endValue
+				else
+					callback initialValue +
+						(easeFunc(parseFloat((elapsed - initialTime) / duration)) * diff)
+
+			requestAnimationFrame update
+
 		requestAnimationFrame update
-	requestAnimationFrame update
+
+animateScrollToElement = (el) ->
+	scrollTo = el.offsetTop
+	top = (window.pageYOffset or document.scrollTop) -
+		(document.clientTop or 0) or 0
+	scroll = (val) ->
+		window.scroll(0, val)
+	animateValueOverTime top, scrollTo, 500, scroll, easeOutCubic
 
 do -> # setup scroll-to-content buttons
-	scrollToMains = document.querySelectorAll '.scroll-to-main'
-	header = document.getElementById 'site-header'
+	scrollToMainElements = document.getElementsByClassName 'scroll-to-main'
 	main = document.getElementById 'site-content'
-	for el in scrollToMains
-		el.addEventListener 'click', ->
-			scrollTo = main.offsetTop
-			animate document.body, 'scrollTop', scrollTo, 500, easeInOut
+	for el in scrollToMainElements
+		el.addEventListener 'click', -> animateScrollToElement main

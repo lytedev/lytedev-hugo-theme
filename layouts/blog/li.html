@@ -10,6 +10,8 @@
 			<h3 class="post-title">{{ .Title }}</h3>
 			<small class="post-date">{{ .Date.Format "Jan 2, 2006" }}</small>
 		</header>
-		<p class="post-description">{{ .Summary }}</p>
+		<div class="post-description">
+			{{ safeHTML .Summary }}
+		</div>
 	</article>
 </a>

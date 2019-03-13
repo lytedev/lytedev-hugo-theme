@@ -1,5 +1,5 @@
 {{ define "main" }}
-	<section class="content">
+	<section class="content" id="page-content">
 		<div class="wrapper">
 			{{ range $i, $p := where (.Paginate .Data.Pages).Pages "Section" "blog" }}
 				{{ $p.Render "li" }}

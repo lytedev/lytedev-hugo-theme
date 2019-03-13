@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700')
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700|Ubuntu+Mono:300,400,700')
 
 $fontstack = "Ubuntu", "Lato", "Helvetica Neue", "Calibri Light", Roboto, sans-serif
-$serif-fontstack = "Libre Baskerville", "Baskerville", "Times New Roman", serif
+// $serif-fontstack = "Libre Baskerville", "Baskerville", "Times New Roman", serif
+$monospace-fontstack = "Ubuntu Mono", "Iosevka Type", "Monaco", "Consalas", "Droid Sans Mono", monospace
 
 *, *::before, *::after
 	box-sizing border-box
@@ -45,6 +46,10 @@ body
 	@media screen and (max-width: $mobile-s-breakpoint)
 		font-size 1.6rem
 
+::-moz-selection, ::selection
+	background $brand-primary-color !important
+	color #fff !important
+	text-shadow 0px 0.1em 0.1em rgba(0, 0, 0, 0.50)
 
 small, figcaption
 	font-size 1.2rem
@@ -106,6 +111,7 @@ svg // ignore some stuff svg doesn't ignore by default
 h1, h2, h3, h4, h5, h6
 	font-weight 300
 	text-align center
+	line-height 1.5em
 
 hr
 	border none
@@ -116,3 +122,7 @@ figure
 	text-align center
 	margin 0
 	padding 0
+
+code, pre
+	font-family $monospace-fontstack
+	font-weight 500

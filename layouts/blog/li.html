@@ -1,17 +1,22 @@
-<a href="{{ .Permalink }}" class="block-link">
-	<article class="small-post"
-		{{- if .Param "image" -}}
-			style="background-image:url({{ $.Param "image" }})">
-			<div class="small-post-background-overlay"></div>
-		{{- else -}}
-			>
-		{{- end -}}
-		<header>
-			<h3 class="post-title">{{ .Title }}</h3>
-			<small class="post-date">{{ .Date.Format "Jan 2, 2006" }}</small>
-		</header>
-		<div class="post-description">
-			{{ safeHTML .Summary }}
-		</div>
-	</article>
-</a>
+{{- if .Param "image" -}}
+	<article class="small-post" style="background-image:url({{ $.Param "image" }})">
+		<div class="small-post-background-overlay"></div>
+{{- else -}}
+	<article class="small-post">
+{{- end -}}
+	<header>
+		<h3 class="post-title">
+			<a href="{{ .Permalink }}" class="block-link small-post-link">
+				{{ .Title }}
+			</a>
+		</h3>
+		<small class="post-date">
+			<a href="{{ .Permalink }}" class="block-link small-post-link">
+				{{ .Date.Format "Jan 2, 2006" }}
+			</a>
+		</small>
+	</header>
+	<div class="post-description">
+		{{ safeHTML .Summary }}
+	</div>
+</article>
